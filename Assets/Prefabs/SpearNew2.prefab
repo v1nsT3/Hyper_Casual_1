@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20566ce645ea27c42aa092a67ded149c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fixedJoint: {fileID: 409214485562045468}
   isConnected: 0
 --- !u!1 &409214485874561727
 GameObject:
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20566ce645ea27c42aa092a67ded149c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fixedJoint: {fileID: 409214486561264692}
   isConnected: 0
 --- !u!1 &409214486803511799
 GameObject:
@@ -393,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20566ce645ea27c42aa092a67ded149c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fixedJoint: {fileID: 409214486825707702}
   isConnected: 0
 --- !u!1 &409214487128483787
 GameObject:
@@ -485,6 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20566ce645ea27c42aa092a67ded149c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fixedJoint: {fileID: 409214487128482870}
   isConnected: 0
 --- !u!1 &409214487331533758
 GameObject:
@@ -495,6 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 409214487331533759}
+  - component: {fileID: 4970739913245857360}
   m_Layer: 7
   m_Name: SpearNew2
   m_TagString: Untagged
@@ -519,6 +524,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4970739913245857360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409214487331533758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fd99593a23b8d4bb1518e1631bf08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Trajectory>k__BackingField: {fileID: 1189781771123290535}
 --- !u!1 &525390210396408691
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,11 +790,11 @@ GameObject:
   - component: {fileID: 1594730641564780409}
   - component: {fileID: 6629036884661527412}
   - component: {fileID: 5462023222749539713}
-  - component: {fileID: 6586370900860325349}
   - component: {fileID: 3480276712214312148}
   - component: {fileID: 8166795164527254013}
   - component: {fileID: 7813981314066505812}
   - component: {fileID: 1849663114886195636}
+  - component: {fileID: 6286249137193697620}
   m_Layer: 7
   m_Name: Spear
   m_TagString: Untagged
@@ -809,7 +827,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7638606512766522544}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -828,22 +846,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.04
-  m_Height: 1.93
+  m_Height: 1.6278968
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.63}
---- !u!114 &6586370900860325349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638606512766522544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fd99593a23b8d4bb1518e1631bf08c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Trajectory>k__BackingField: {fileID: 1189781771123290535}
+  m_Center: {x: 0, y: 0, z: 0.47894847}
 --- !u!114 &3480276712214312148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6629036884661527412}
+  _hingeJoint: {fileID: 6286249137193697620}
 --- !u!114 &7813981314066505812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,4 +904,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b290ea846413ae40b58a400bcb81c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _throwSpeed: 15
+  _throwSpeed: 20
+--- !u!59 &6286249137193697620
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638606512766522544}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 1.35}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0, y: 0, z: 1.35}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -8
+    max: 8
+    bounciness: 1
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1

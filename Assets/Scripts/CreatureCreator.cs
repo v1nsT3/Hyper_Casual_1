@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class CreatureCreator : MonoBehaviour
 {
     [SerializeField] private Creature _prefabCreature;
     [SerializeField] private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();

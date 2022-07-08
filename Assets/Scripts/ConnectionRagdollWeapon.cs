@@ -12,6 +12,15 @@ public class ConnectionRagdollWeapon : MonoBehaviour
 
     public event Action OnAddRagdoll;
 
+    private void OnDisable()
+    {
+        _currentRagdollConnect.Clear();
+        foreach (Joint joint in _joints)
+        {
+            joint.isConnected = false;
+        }
+    }
+
     private void Start()
     {
         _joints.AddRange(GetComponentsInChildren<Joint>());

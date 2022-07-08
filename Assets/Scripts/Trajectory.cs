@@ -18,5 +18,6 @@ public abstract class Trajectory : MonoBehaviour
     private void Start()
     {
         _target = GetComponentInParent<WeaponCreater>().Target;
+        _lineRenderer = GetComponentInParent<LineRenderer>();
     }
 }

@@ -5,31 +5,44 @@ using UnityEngine;
 public class AttachWeapon : MonoBehaviour, IAttachable
 {
     [SerializeField] private Rigidbody _rigidbody;
-
+    [SerializeField] private HingeJoint _hingeJoint;
+    private WeaponCreater _weaponCreater;
     public bool IsAttached => _isAttached;
     private bool _isAttached = false;
+
+    private void OnDisable()
+    {
+        _isAttached = false;
+        _rigidbody.isKinematic = true;
+        _hingeJoint.connectedBody = null;
+    }
+
+    private void Start()
+    {
+        _weaponCreater = GetComponentInParent<WeaponCreater>();
+    }
 
     public void Attach(Rigidbody rigidbody)
     {
         if (_isAttached)
             return;
-        HingeJoint hingeJoint = gameObject.AddComponent<HingeJoint>();
-        hingeJoint.connectedBody = rigidbody;
-        hingeJoint.useLimits = true;
+
+        _weaponCreater.CreateWeapon();
+        _hingeJoint.connectedBody = rigidbody;
         _rigidbody.isKinematic = false;
-        StartCoroutine(AttachDelay(hingeJoint));
+        StartCoroutine(AttachDelay(_hingeJoint));
         _isAttached = true;
     }
 
     private IEnumerator AttachDelay(HingeJoint hingeJoint)
     {
         JointLimits limits = new JointLimits();
-        limits.min = 0f;
+        limits.min = -8f;
         limits.max = 8f;
         limits.bounciness = 1f;
-        limits.bounceMinVelocity = 0f;
+        limits.bounceMinVelocity = 0.2f;
         hingeJoint.limits = limits;
-        
+
         while (limits.bounciness != 0)
         {
             limits.bounciness -= Time.deltaTime / 2;

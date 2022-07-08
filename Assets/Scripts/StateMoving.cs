@@ -5,7 +5,7 @@ public class StateMoving : BaseState
     private IMovable _movable;
     public StateMoving(Weapon weapon) : base(weapon)
     {
-        _movable = weapon.GetComponent<IMovable>();
+        _movable = weapon.GetComponentInChildren<IMovable>();
     }
 
     public override void Enter()

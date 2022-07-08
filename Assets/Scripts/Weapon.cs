@@ -6,17 +6,23 @@ public class Weapon : MonoBehaviour
 {
     private StateMachine _weaponStateMachine;
 
-    private IAttachable _attachable; 
+    private IAttachable _attachable;
 
     public IInputReader InputWeapon { get; private set; }
 
     [field: SerializeField] public Trajectory Trajectory { get; private set; }
 
+    private void OnDisable()
+    {
+        if (_weaponStateMachine != null)
+            _weaponStateMachine.ChangeState(_weaponStateMachine.idleState);
+    }
+
     public void Start()
     {
         InputWeapon = new InputWeapon();
 
-        _attachable = GetComponent<IAttachable>();
+        _attachable = GetComponentInChildren<IAttachable>();
 
         _weaponStateMachine = new StateMachine(this);
 

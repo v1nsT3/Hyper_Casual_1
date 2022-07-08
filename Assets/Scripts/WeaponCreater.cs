@@ -4,12 +4,18 @@ using UnityEngine;
 public class WeaponCreater : MonoBehaviour
 {
     [field: SerializeField] public Transform Target { get; private set; }
-    [SerializeField] private List<GameObject> _weapons = new List<GameObject>();
-    [SerializeField] private GameObject _currentWeapon;
+    [SerializeField] private Weapon _prefabWeapon;
+    [SerializeField] private Weapon _currentWeapon;
+    [SerializeField] private int _poolCount = 5;
+    [SerializeField] private bool _autoExpand = false;
+
+    private PoolMono<Weapon> _pool;
 
     void Start()
     {
-        CreateWeapon(_weapons[0]);
+        _pool = new PoolMono<Weapon>(_prefabWeapon, _poolCount, transform);
+        _pool.AutoExpand = _autoExpand;
+        CreateWeapon();
     }
 
     private void OnDrawGizmos()
@@ -25,11 +31,10 @@ public class WeaponCreater : MonoBehaviour
         //}
     }
 
-    public void CreateWeapon(GameObject weapon)
+    public void CreateWeapon()
     {
-        if (_currentWeapon != null)
-            Destroy(_currentWeapon);
-
-        _currentWeapon = Instantiate(weapon, transform);
+        _currentWeapon = _pool.GetFreeElement();
+        _currentWeapon.transform.position = transform.position;
+        _currentWeapon.transform.rotation = transform.rotation;
     }
 }
