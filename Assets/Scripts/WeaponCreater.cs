@@ -1,21 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponCreater : MonoBehaviour
 {
+    public event Action OnReduceWeapon;
+
     [field: SerializeField] public Transform Target { get; private set; }
     [SerializeField] private Weapon _prefabWeapon;
     [SerializeField] private Weapon _currentWeapon;
-    [SerializeField] private int _poolCount = 5;
     [SerializeField] private bool _autoExpand = false;
 
     private PoolMono<Weapon> _pool;
 
-    void Start()
+    public void Construct(GameSettings gameSettings)
     {
-        _pool = new PoolMono<Weapon>(_prefabWeapon, _poolCount, transform);
+        _pool = new PoolMono<Weapon>(_prefabWeapon, gameSettings.MaxWeaponCount, transform);
         _pool.AutoExpand = _autoExpand;
-        CreateWeapon();
+        _currentWeapon = _pool.GetFreeElement();
     }
 
     private void OnDrawGizmos()
@@ -36,5 +38,6 @@ public class WeaponCreater : MonoBehaviour
         _currentWeapon = _pool.GetFreeElement();
         _currentWeapon.transform.position = transform.position;
         _currentWeapon.transform.rotation = transform.rotation;
+        OnReduceWeapon?.Invoke();
     }
 }

@@ -790,11 +790,11 @@ GameObject:
   - component: {fileID: 1594730641564780409}
   - component: {fileID: 6629036884661527412}
   - component: {fileID: 5462023222749539713}
+  - component: {fileID: 6286249137193697620}
   - component: {fileID: 3480276712214312148}
   - component: {fileID: 8166795164527254013}
   - component: {fileID: 7813981314066505812}
   - component: {fileID: 1849663114886195636}
-  - component: {fileID: 6286249137193697620}
   m_Layer: 7
   m_Name: Spear
   m_TagString: Untagged
@@ -849,6 +849,42 @@ CapsuleCollider:
   m_Height: 1.6278968
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.47894847}
+--- !u!59 &6286249137193697620
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638606512766522544}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 1.35}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0, y: 0, z: 1.35}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -8
+    max: 8
+    bounciness: 1
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!114 &3480276712214312148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,39 +941,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _throwSpeed: 20
---- !u!59 &6286249137193697620
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638606512766522544}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 1.35}
-  m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 0
-  m_ConnectedAnchor: {x: 0, y: 0, z: 1.35}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_Limits:
-    min: -8
-    max: 8
-    bounciness: 1
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
